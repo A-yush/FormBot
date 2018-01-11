@@ -51,7 +51,7 @@ def post_fb_msg(fbid,received_msg):
 		 	break
 	post_response_message(fbid,spread_text)     
 
-def post_response_message(fbid,nutri_text):
+def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	response_msg=json.dumps({"recipient":{"id":fbid},"message":{"text":spread_text}})
 	status=requests.post(post_msg_url,headers={"content-Type":"application/json"},data=response_msg)
