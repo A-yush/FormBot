@@ -24,11 +24,10 @@ QAlist=["what is your mobile no.",
 		"what is your overall cgpa",
 		"what is your fav language"]
 alpha=["A","B","C","D"]
-global i
-i=2
 
 class sheetView(generic.View):
 	j=0
+	i=2
 	def get(self,request,*args,**kwargs):
 		if self.request.GET['hub.verify_token']==VERIFY_TOKEN:
 			return HttpResponse(self.request.GET['hub.challenge'])
@@ -67,21 +66,16 @@ def post_fb_msg(fbid,received_msg):
 		 	if cnt >= len(QAlist):
 		 		spread_text="thankyou for your time"
 		 		post_response_message(fbid,spread_text)
-		 		i+=1
+		 		i.sheetView+=1
 		 		break
-		 	cell=alpha[cnt]+str(i)
+		 	cell=alpha[cnt]+str(i.sheetView)
 		 	sheetAccess(cell,received_msg)
 		 	cnt+=1
 		 	if cnt>0:
 		 		spread_text=QAlist[cnt]
 		 		post_response_message(fbid,spread_text)
 		 		break	
-			
-
-
-
-			
-		 
+			 
 
 def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
