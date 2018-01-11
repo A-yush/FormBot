@@ -36,7 +36,7 @@ class sheetView(generic.View):
 			for message in entry['messaging']:
 				if 'message' in message:
 					pprint(message)
-					post_fb_msg(message['sender']['id'],message['sender']['text'])
+					post_fb_msg(message['sender']['id'],message['message']['text'])
 			return HttpResponse()
 
 def post_fb_msg(fbid,received_msg):
@@ -48,6 +48,7 @@ def post_fb_msg(fbid,received_msg):
 		 list1=['hy','hello','sup','hola','hey']
 		 if token in list1:
 		 	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
+		 	break
 	post_response_message(fbid,spread_text)     
 
 def post_response_message(fbid,nutri_text):
