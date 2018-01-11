@@ -66,7 +66,7 @@ def post_fb_msg(fbid,received_msg):
 		 		spread_text="thankyou for your time"
 		 		post_response_message(fbid,spread_text)
 		 		sheetView.i+=1
-		 		sheetView.cnt=0
+		 		#sheetView.cnt=0
 		 		break
 		 	cell=alpha[sheetView.cnt]+str(sheetView.i)
 		 	sheetAccess(cell,received_msg)
