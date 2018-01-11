@@ -25,7 +25,7 @@ SECRET_KEY = '=!q^1_)cl7x=f1($h&lmcm#th2xx6nmrt^djnoi=139op#a6$@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['form-bot397.herokuapp.com']
 
 
 # Application definition
