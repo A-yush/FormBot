@@ -47,6 +47,7 @@ class sheetView(generic.View):
 			return HttpResponse()
 
 def post_fb_msg(fbid,received_msg):
+	cnt=sheetView.j
 	spread_text=''
 	user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
 	user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
@@ -62,7 +63,6 @@ def post_fb_msg(fbid,received_msg):
 		 	break
 			
 		 else:
-		 	cnt=sheetView.j
 		 	if cnt >= len(QAlist):
 		 		spread_text="thankyou for your time"
 		 		post_response_message(fbid,spread_text)
@@ -71,11 +71,9 @@ def post_fb_msg(fbid,received_msg):
 		 	cell=alpha[cnt]+str(sheetView.i)
 		 	sheetAccess(cell,received_msg)
 		 	cnt+=1
-		 	if cnt>0:
-		 		spread_text=QAlist[cnt]
-		 		post_response_message(fbid,spread_text)
-		 		print(cnt)
-		 		break	
+		 	spread_text=QAlist[cnt]
+		 	post_response_message(fbid,spread_text)
+		 	print(cnt)	
 			 
 
 def post_response_message(fbid,spread_text):
