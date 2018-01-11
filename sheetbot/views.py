@@ -14,7 +14,7 @@ def sheetAccess(pos,stat):
 	credentials=ServiceAccountCredentials.from_json_keyfile_name('gspread_service.json',scope)
 	gc=gspread.authorize(credentials)
 	ss=gc.open("sheetTest")
-	wks=ss.get_worksheet(0)
+	wks=ss.get_worksheet(0) 	
 	wks.update_acell(pos,stat)
 
 PAGE_ACCESS_TOKEN='EAAQemtiTbv4BAI1mkQ2ZAPKAQCZBlafO59UHdXBktJCE68Wpb7uNM4seeni1SY4qGJQMgPoeR3MTED2BJco8aX85kaqKgNjRQlUKN83FkJOeeJCjpsBpZCncWPlK8G4SRc34wLgMm6cjj52ACLab3TNWDrZAmxAtGmUIZAoOXPgZDZD'
@@ -49,9 +49,10 @@ def post_fb_msg(fbid,received_msg):
 	for token in tokens:
 		 list1=['hy','hello','sup','hola','hey']
 		 if token in list1:
-			spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
-			print(spread_text)
-			post_response_message(fbid,spread_text)     
+		 	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
+		 	print(spread_text)
+			
+	post_response_message(fbid,spread_text)     
 
 def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
