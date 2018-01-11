@@ -20,9 +20,12 @@ def sheetAccess(pos,stat):
 PAGE_ACCESS_TOKEN='EAAQemtiTbv4BAI1mkQ2ZAPKAQCZBlafO59UHdXBktJCE68Wpb7uNM4seeni1SY4qGJQMgPoeR3MTED2BJco8aX85kaqKgNjRQlUKN83FkJOeeJCjpsBpZCncWPlK8G4SRc34wLgMm6cjj52ACLab3TNWDrZAmxAtGmUIZAoOXPgZDZD'
 VERIFY_TOKEN='654321'
 QAlist=["what is your mobile no.",
-        "which stream you opted",
-        "what is your overall cgpa",
-        "what is your fav language"]
+		"which stream you opted",
+		"what is your overall cgpa",
+		"what is your fav language"]
+alpha=["A","B","C","D"]
+j=0
+i=2
 
 class sheetView(generic.View):
 	def get(self,request,*args,**kwargs):
@@ -54,15 +57,29 @@ def post_fb_msg(fbid,received_msg):
 	for token in tokens:
 		 list1=['hy','hello','sup','hola','hey']
 		 if token in list1:
-		 	spread_text="Hy "+name+" I am form Bot.To fill the form please answer the following questions"
+		 	spread_text="Hy "+name+" I am form Bot.To fill the form please answer the following questions. 1. "+QAlist[0]
 		 	post_response_message(fbid,spread_text)
-		 	for i in range(0,len(QAlist)-1):
-		 		spread_text=QAlist[i]
+		 	break
+			
+		 else:
+		 	if j >= len(QAlist):
+		 		spread_text="thankyou for your time"
 		 		post_response_message(fbid,spread_text)
+		 		i+=1
+		 		break
+		 	cell=alpha[j]+str(i)
+		 	sheetAccess(cell,received_msg)
+		 	j+=1
+		 	if j>0:
+		 		spread_text=QAlist[j]
+		 		post_response_message(fbid,spread_text)
+		 		break	
+			
+
 
 
 			
-	     
+		 
 
 def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
