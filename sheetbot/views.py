@@ -74,6 +74,7 @@ def post_fb_msg(fbid,received_msg):
 		 	if cnt>0:
 		 		spread_text=QAlist[cnt]
 		 		post_response_message(fbid,spread_text)
+		 		print(cnt)
 		 		break	
 			 
 
