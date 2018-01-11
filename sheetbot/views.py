@@ -48,7 +48,7 @@ class sheetView(generic.View):
 			return HttpResponse()
 
 def post_fb_msg(fbid,received_msg):
-	cnt=sheetView.j
+	cnt=j
 	spread_text=''
 	user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
 	user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
