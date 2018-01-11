@@ -48,6 +48,7 @@ def post_fb_msg(fbid,received_msg):
 	tokens=re.sub(r"[a-zA-Z0-9\s]",' ',received_msg).lower().split()
 	for token in tokens:
 		 list1=['hy','hello','sup','hola','hey']
+		 spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
 		 if token in list1:
 		 	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
 		 	print(spread_text)
