@@ -24,9 +24,9 @@ QAlist=["what is your mobile no.",
 		"what is your overall cgpa",
 		"what is your fav language"]
 alpha=["A","B","C","D"]
-cnt=0
 
 class sheetView(generic.View):
+	cnt=0
 	i=2
 	def get(self,request,*args,**kwargs):
 		if self.request.GET['hub.verify_token']==VERIFY_TOKEN:
@@ -62,17 +62,17 @@ def post_fb_msg(fbid,received_msg):
 		 	break
 			
 		 else:
-		 	if cnt >= len(QAlist):
+		 	if sheetView.cnt >= len(QAlist):
 		 		spread_text="thankyou for your time"
 		 		post_response_message(fbid,spread_text)
 		 		sheetView.i+=1
 		 		break
 		 	cell=alpha[cnt]+str(sheetView.i)
 		 	sheetAccess(cell,received_msg)
-		 	cnt+=1
-		 	spread_text=QAlist[cnt]
+		 	sheetView.cnt+=1
+		 	spread_text=QAlist[sheetView.cnt]
 		 	post_response_message(fbid,spread_text)
-		 	print(cnt)	
+		 	print(sheetView.cnt)	
 			 
 
 def post_response_message(fbid,spread_text):
