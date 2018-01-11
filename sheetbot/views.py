@@ -67,7 +67,7 @@ def post_fb_msg(fbid,received_msg):
 		 		post_response_message(fbid,spread_text)
 		 		sheetView.i+=1
 		 		break
-		 	cell=alpha[cnt]+str(sheetView.i)
+		 	cell=alpha[sheetView.cnt]+str(sheetView.i)
 		 	sheetAccess(cell,received_msg)
 		 	sheetView.cnt+=1
 		 	spread_text=QAlist[sheetView.cnt]
