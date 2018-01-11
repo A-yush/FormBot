@@ -69,7 +69,7 @@ def post_fb_msg(fbid,received_msg):
 		 		post_response_message(fbid,spread_text)
 		 		i+=1
 		 		break
-		 	cell=alpha[j]+str(i)
+		 	cell=alpha[cnt]+str(i)
 		 	sheetAccess(cell,received_msg)
 		 	cnt+=1
 		 	if cnt>0:
