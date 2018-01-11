@@ -45,10 +45,11 @@ def post_fb_msg(fbid,received_msg):
 	user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
 	user_details = requests.get(user_details_url, user_details_params).json()
 	pprint(user_details)
-	tokens=re.sub(r"[a-zA-Z0-9\s]",' ',received_msg).lower().split()
+	tokens=re.sub(r"[^a-zA-Z0-9\s]",' ',received_msg).lower().split()
 	for token in tokens:
 		 list1=['hy','hello','sup','hola','hey']
 		 spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
+
 		 if token in list1:
 		 	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
 		 	print(spread_text)
