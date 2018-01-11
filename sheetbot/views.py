@@ -19,6 +19,10 @@ def sheetAccess(pos,stat):
 
 PAGE_ACCESS_TOKEN='EAAQemtiTbv4BAI1mkQ2ZAPKAQCZBlafO59UHdXBktJCE68Wpb7uNM4seeni1SY4qGJQMgPoeR3MTED2BJco8aX85kaqKgNjRQlUKN83FkJOeeJCjpsBpZCncWPlK8G4SRc34wLgMm6cjj52ACLab3TNWDrZAmxAtGmUIZAoOXPgZDZD'
 VERIFY_TOKEN='654321'
+QAlist=["what is your mobile no.",
+        "which stream you opted",
+        "what is your overall cgpa",
+        "what is your fav language"]
 
 class sheetView(generic.View):
 	def get(self,request,*args,**kwargs):
@@ -44,15 +48,21 @@ def post_fb_msg(fbid,received_msg):
 	user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
 	user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
 	user_details = requests.get(user_details_url, user_details_params).json()
+	name=user_details['first_name']
 	pprint(user_details)
 	tokens=re.sub(r"[^a-zA-Z0-9\s]",' ',received_msg).lower().split()
 	for token in tokens:
 		 list1=['hy','hello','sup','hola','hey']
 		 if token in list1:
-		 	spread_text="Hy "+user_details['first_name']+" I am form Bot.To fill the form please answer the following questions"
-		 	print(spread_text)
+		 	spread_text="Hy "+name+" I am form Bot.To fill the form please answer the following questions"
+		 	post_response_message(fbid,spread_text)
+		 	for i in range(0,len(QAlist)-1):
+		 		spread_text=QAlist[i]
+		 		post_response_message(fbid,spread_text)
+
+
 			
-	post_response_message(fbid,spread_text)     
+	     
 
 def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
