@@ -49,9 +49,9 @@ def post_fb_msg(fbid,received_msg):
 	for token in tokens:
 		 list1=['hy','hello','sup','hola','hey']
 		 if token in list1:
-		 	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
-		 	print(spread_text)
-	        post_response_message(fbid,spread_text)     
+			spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
+			print(spread_text)
+			post_response_message(fbid,spread_text)     
 
 def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
