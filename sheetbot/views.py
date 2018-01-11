@@ -26,6 +26,7 @@ QAlist=["what is your mobile no.",
 alpha=["A","B","C","D"]
 
 class sheetView(generic.View):
+	global j
 	j=0
 	i=2
 	def get(self,request,*args,**kwargs):
