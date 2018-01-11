@@ -24,7 +24,8 @@ QAlist=["what is your mobile no.",
 		"what is your overall cgpa",
 		"what is your fav language"]
 alpha=["A","B","C","D"]
-global i=2
+global i
+i=2
 
 class sheetView(generic.View):
 	j=0
