@@ -30,31 +30,30 @@ class sheetView(generic.View):
 	@method_decorator(csrf_exempt)
 	def dispatch(self,request,*args,**kwargs):
 		return generic.View.dispatch(self,request,*args,**kwargs)
-    def post(self,request,*args,**kwargs):
-    	incoming_msgs=json.loads(self.request.body.decode('utf-8'))
-        for entry in incoming_msgs['entry']:
-        	for message in entry['messaging']:
-	        	if 'message' in message:
-	        		pprint(message)
-	        		post_fb_msg(message['sender']['id'],message['sender']['text'])
-            return HttpResponse()
+	def post(self,request,*args,**kwargs):
+		incoming_msgs=json.loads(self.request.body.decode('utf-8'))
+		for entry in incoming_msgs['entry']:
+			for message in entry['messaging']:
+				if 'message' in message:
+					pprint(message)
+					post_fb_msg(message['sender']['id'],message['sender']['text'])
+			return HttpResponse()
 
 def post_fb_msg(fbid,received_msg):
 	user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
-    user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-    user_details = requests.get(user_details_url, user_details_params).json()
+	user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
+	user_details = requests.get(user_details_url, user_details_params).json()
 	tokens=re.sub(r"[a-zA-Z0-9\s]",' ',received_msg).lower().split()
 	for token in tokens:
-	     list1=['hy','hello','sup','hola','hey']
-	     if token in list1:
-	     	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
-
-
+		 list1=['hy','hello','sup','hola','hey']
+		 if token in list1:
+		 	spread_text="Hy"+user_details['first_name']+"I am form Bot.To fill the form please answer the following questions"
+		      
 
 def post_response_message(fbid,nutri_text):
-		post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-		response_msg=json.dumps({"recipient":{"id":fbid},"message":{"text":spread_text}})
-		status=requests.post(post_msg_url,headers={"content-Type":"application/json"},data=response_msg)
+	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+	response_msg=json.dumps({"recipient":{"id":fbid},"message":{"text":spread_text}})
+	status=requests.post(post_msg_url,headers={"content-Type":"application/json"},data=response_msg)
 
 
 
