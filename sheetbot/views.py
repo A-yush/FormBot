@@ -66,9 +66,9 @@ def post_fb_msg(fbid,received_msg):
 		 	if cnt >= len(QAlist):
 		 		spread_text="thankyou for your time"
 		 		post_response_message(fbid,spread_text)
-		 		i.sheetView+=1
+		 		sheetView.i+=1
 		 		break
-		 	cell=alpha[cnt]+str(i.sheetView)
+		 	cell=alpha[cnt]+str(sheetView.i)
 		 	sheetAccess(cell,received_msg)
 		 	cnt+=1
 		 	if cnt>0:
