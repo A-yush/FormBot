@@ -62,7 +62,7 @@ def post_fb_msg(fbid,received_msg):
 		 	break
 			
 		 else:
-		 	if sheetView.cnt == len(QAlist):
+		 	if sheetView.cnt = len(QAlist):
 		 		spread_text="thankyou for your time.Type hi to refill"
 		 		post_response_message(fbid,spread_text)
 		 		sheetView.i+=1
@@ -75,7 +75,6 @@ def post_fb_msg(fbid,received_msg):
 		 	post_response_message(fbid,spread_text)
 		 	print(sheetView.cnt)	
 			 
-
 def post_response_message(fbid,spread_text):
 	post_msg_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	response_msg=json.dumps({"recipient":{"id":fbid},"message":{"text":spread_text}})
