@@ -62,7 +62,7 @@ def post_fb_msg(fbid,received_msg):
 		 	break
 			
 		 else:
-		 	if sheetView.cnt == len(QAlist)-1:
+		 	if sheetView.cnt == len(QAlist):
 		 		spread_text="thankyou for your time.Type hy to refill"
 		 		post_response_message(fbid,spread_text)
 		 		sheetView.i+=1
