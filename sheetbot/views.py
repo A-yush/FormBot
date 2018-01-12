@@ -17,7 +17,7 @@ def sheetAccess(pos,stat):
 	wks=ss.get_worksheet(0) 	
 	wks.update_acell(pos,stat)
 
-PAGE_ACCESS_TOKEN='EAAQemtiTbv4BAI1mkQ2ZAPKAQCZBlafO59UHdXBktJCE68Wpb7uNM4seeni1SY4qGJQMgPoeR3MTED2BJco8aX85kaqKgNjRQlUKN83FkJOeeJCjpsBpZCncWPlK8G4SRc34wLgMm6cjj52ACLab3TNWDrZAmxAtGmUIZAoOXPgZDZD'
+PAGE_ACCESS_TOKEN=YOUR_PAGE_TOKEN
 VERIFY_TOKEN='654321'
 QAlist=["what is your mobile no.",
 		"which stream you opted",
